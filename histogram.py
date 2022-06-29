@@ -75,8 +75,10 @@ if __name__ == "__main__":
     elif data:
         try:
             data = parse_data(data)
+            heights, edges = np.histogram(data, bins=bins, range=(lo, hi))
 
             st.subheader("Private Histogram:")
+
             priv_heights, priv_edges = compute_dp_histogram(
                 data, eps=eps, range=(lo, hi), bins=bins
             )
@@ -90,8 +92,5 @@ if __name__ == "__main__":
             st.error(f"There is an issue with the data: {e}")
 
         st.subheader("Non-Private Histogram:")
-        fig = plt.figure(figsize=(10, 4))
-
-        heights, edges = np.histogram(data, bins=bins, range=(lo, hi))
         fig = plot_histogram(heights, edges)
         st.pyplot(fig)
