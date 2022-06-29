@@ -83,6 +83,9 @@ if __name__ == "__main__":
             fig = plot_histogram(priv_heights, priv_edges)
             st.pyplot(fig)
 
+            loss = np.linalg.norm(priv_heights - heights, ord=1)
+            st.write(f"L1 utility loss: {loss:2.2f}")
+
         except ValueError as e:
             st.error(f"There is an issue with the data: {e}")
 
@@ -92,6 +95,3 @@ if __name__ == "__main__":
         heights, edges = np.histogram(data, bins=bins, range=(lo, hi))
         fig = plot_histogram(heights, edges)
         st.pyplot(fig)
-
-        loss = np.linalg.norm(priv_heights - heights, ord=1)
-        st.write(f"L1 utility loss: {loss:2.2f}")
