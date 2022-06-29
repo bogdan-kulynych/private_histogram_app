@@ -1,5 +1,3 @@
-import tempfile
-
 from typing import Tuple
 
 import streamlit as st
@@ -25,11 +23,9 @@ def parse_data(data: str) -> np.ndarray:
     return np.array(nums)
 
 
-def plot_histogram(heights: np.ndarray, edges: np.ndarray, bin_width: float = 0.5):
-    left_edges = edges[:-1]
-    bin_width = 10 / len(heights)
-    width = 0.5 * (left_edges[1] - left_edges[0])
+def plot_histogram(heights: np.ndarray, edges: np.ndarray):
     fig = plt.figure(figsize=(10, 4))
+    left_edges = edges[:-1]
     plt.bar(left_edges, heights, width=np.diff(edges), align="edge", edgecolor="black")
     fig.set_tight_layout(True)
     return fig
