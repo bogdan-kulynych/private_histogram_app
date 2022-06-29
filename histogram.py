@@ -55,7 +55,7 @@ def compute_dp_histogram(
 if __name__ == "__main__":
     st.title("Differentially Private Histogram")
     st.write(
-        "Generate a private histgram by adding noise from a Truncated Geometric mechanism."
+        "Generate a private histogram by adding noise from a Truncated Geometric mechanism."
     )
     eps = st.sidebar.number_input("Epsilon", min_value=0.0, max_value=15.0, value=1.0)
     bins = int(
